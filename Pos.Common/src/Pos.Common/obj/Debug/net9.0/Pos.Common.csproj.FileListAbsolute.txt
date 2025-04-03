@@ -4,3 +4,16 @@ D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debu
 D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.AssemblyInfo.cs
 D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.csproj.CoreCompileInputs.cache
 D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.sourcelink.json
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\bin\Debug\net9.0\Pos.Common.deps.json
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\bin\Debug\net9.0\Pos.Common.dll
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\bin\Debug\net9.0\Pos.Common.pdb
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.csproj.AssemblyReference.cache
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.AssemblyInfoInputs.cache
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.AssemblyInfo.cs
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.csproj.CoreCompileInputs.cache
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.sourcelink.json
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.dll
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\refint\Pos.Common.dll
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.pdb
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\ref\Pos.Common.dll

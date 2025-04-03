@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Pos.Common</id>
+    <version>1.0.0</version>
+    <authors>Pos.Common</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="5436a9d2693f9650d65e8bf3774764931423e4aa" />
+    <dependencies>
+      <group targetFramework="net9.0">
+        <dependency id="Microsoft.Extensions.Configuration" version="9.0.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Binder" version="9.0.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection" version="9.0.3" exclude="Build,Analyzers" />
+        <dependency id="MongoDB.Driver" version="3.2.1" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore" version="7.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\bin\Release\net9.0\Pos.Common.dll" target="lib\net9.0\Pos.Common.dll" />
+  </files>
+</package>

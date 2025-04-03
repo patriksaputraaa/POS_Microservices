@@ -1323,11 +1323,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\POS_Microservices\\POS_Microservices\\Pos.Common\\src\\Pos.Common\\Pos.Common.csproj",
+      "projectUniqueName": "D:\\GitHub\\UTS_Microservices\\POS_Microservices\\Pos.Common\\src\\Pos.Common\\Pos.Common.csproj",
       "projectName": "Pos.Common",
-      "projectPath": "D:\\GitHub\\POS_Microservices\\POS_Microservices\\Pos.Common\\src\\Pos.Common\\Pos.Common.csproj",
+      "projectPath": "D:\\GitHub\\UTS_Microservices\\POS_Microservices\\Pos.Common\\src\\Pos.Common\\Pos.Common.csproj",
       "packagesPath": "C:\\Users\\hp394\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\POS_Microservices\\POS_Microservices\\Pos.Common\\src\\Pos.Common\\obj\\",
+      "outputPath": "D:\\GitHub\\UTS_Microservices\\POS_Microservices\\Pos.Common\\src\\Pos.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1344,6 +1344,7 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "D:\\GitHub\\Microservices\\Project\\MicroserviceProject\\packages": {},
+        "D:\\GitHub\\UTS_Microservices\\POS_Microservices\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
