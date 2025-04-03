@@ -2,7 +2,7 @@ using Pos.Common.MongoDB;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Bson;
-using Pos.Customer.Service.Entities;
+using Pos.Product.Service.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
@@ -10,11 +10,14 @@ BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard
 builder.Services.AddControllers(
     options => options.SuppressAsyncSuffixInActionNames = false
 );
+
+// Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMongo().AddMongoRepository<Customers>("customer");
+builder.Services.AddMongo().AddMongoRepository<Products>("product");
+builder.Services.AddMongo().AddMongoRepository<Categories>("category");
 
 var app = builder.Build();
 
