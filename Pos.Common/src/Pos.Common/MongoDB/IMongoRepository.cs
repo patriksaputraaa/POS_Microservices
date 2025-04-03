@@ -1,6 +1,6 @@
 using MongoDB.Driver;
 
-namespace Play.Common.Service.MongoDB
+namespace Pos.Common.MongoDB
 {
     public class MongoRepository<T> : IRepository<T> where T : IEntity
     {

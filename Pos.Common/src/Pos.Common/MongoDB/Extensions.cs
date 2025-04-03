@@ -2,8 +2,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using Play.Common.Service.Settings;
+using Pos.Common.Settings;
 
-namespace Play.Common.Service.MongoDB
+namespace Pos.Common.MongoDB
 {
     public static class Extensions
     {

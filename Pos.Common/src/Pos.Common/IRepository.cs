@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Play.Common.Service
+namespace Pos.Common
 {
     public interface IRepository<T> where T : IEntity
     {

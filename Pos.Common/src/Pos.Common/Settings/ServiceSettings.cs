@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Play.Common.Service.Settings
+namespace Pos.Common.Settings
 {
     public class ServiceSettings
     {

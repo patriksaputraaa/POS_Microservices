@@ -1,0 +1,6 @@
+D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.csproj.AssemblyReference.cache
+D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.AssemblyInfoInputs.cache
+D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.AssemblyInfo.cs
+D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.csproj.CoreCompileInputs.cache
+D:\GitHub\POS_Microservices\POS_Microservices\Pos.Common\src\Pos.Common\obj\Debug\net9.0\Pos.Common.sourcelink.json
