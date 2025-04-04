@@ -56,6 +56,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.3, )"
+            },
+            "Pos.Common": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [
