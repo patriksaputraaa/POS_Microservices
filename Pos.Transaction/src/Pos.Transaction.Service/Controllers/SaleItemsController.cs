@@ -52,8 +52,6 @@ namespace Pos.Transaction.Service.Controllers
             return CreatedAtAction(nameof(GetItem), new { id = SaleItems.Id }, SaleItems);
         }
 
-        #====================================== SAMPAI SINI TINGGAL GANTI KE SALEITEMS===================================
-
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(Guid id, UpdateSaleItemsDto updateSaleItemsDto)
         {
