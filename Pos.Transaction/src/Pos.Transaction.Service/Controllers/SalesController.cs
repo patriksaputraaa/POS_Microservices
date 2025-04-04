@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Pos.Common;
 using Pos.Transaction.Service.Clients;
 using Pos.Transaction.Service.Entities;
 
@@ -15,9 +16,9 @@ namespace Pos.Transaction.Service.Controllers
         private readonly IRepository<Sales> salesRepository;
         private readonly CustomerClient customerClient;
 
-        public SalesController(IRepository<SaleItems> saleItemsRepository, CustomerClient customerClient)
+        public SalesController(IRepository<Sales> salesRepository, CustomerClient customerClient)
         {
-            this.salesRepository = saleItemsRepository;
+            this.salesRepository = salesRepository;
             this.customerClient = customerClient;
         }
 

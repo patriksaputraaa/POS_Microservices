@@ -2,14 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Pos.Customer.Service.Entities;
-namespace Pos.Customer.Service
+using Pos.Transaction.Service.Entities;
+namespace Pos.Transaction.Service
 {
     public static class Extensions
     {
-        public static CustomerDto AsDto(this Customers customer)
+        public static SalesDto AsDto(this Sales sales)
         {
-            return new CustomerDto(customer.Id, customer.Name, customer.ContactNumber, customer.Address, customer.Email);
+            return new SalesDto(sales.Id, sales.CustomerId, sales.SaleDate, sales.TotalAmount);
+        }
+
+        public static SaleItemsDto AsDto(this SaleItems saleItems)
+        {
+            return new SaleItemsDto(saleItems.Id, saleItems.SaleId, saleItems.ProductId, saleItems.Quantity, saleItems.Price);
         }
     }
 }

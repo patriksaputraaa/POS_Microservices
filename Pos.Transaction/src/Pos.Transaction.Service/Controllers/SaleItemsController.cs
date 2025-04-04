@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Pos.Common;
+using Pos.Transaction.Service.Clients;
+using Pos.Transaction.Service.Entities;
 
 namespace Pos.Transaction.Service.Controllers
 {
@@ -27,7 +30,7 @@ namespace Pos.Transaction.Service.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<SaleItemsDto>>> GetByIdAsync(Guid id)
+        public async Task<ActionResult<SaleItemsDto>> GetByIdAsync(Guid id)
         {
             var saleItems = await saleItemsRepository.GetByIdAsync(id);
             if (saleItems is null)
@@ -38,18 +41,18 @@ namespace Pos.Transaction.Service.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<SaleItems>> Post(CreateSaleItems createSaleItems)
+        public async Task<ActionResult<SaleItemsDto>> Post(CreateSaleItemsDto createSaleItemsDto)
         {
             var saleItems = new SaleItems
             {
-                SaleId = createSaleItems.SaleId,
-                ProductId = createSaleItems.ProductId,
-                Quantity = createSaleItems.Quantity,
-                Price = createSaleItems.Price
+                SaleId = createSaleItemsDto.SaleId,
+                ProductId = createSaleItemsDto.ProductId,
+                Quantity = createSaleItemsDto.Quantity,
+                Price = createSaleItemsDto.Price
             };
-            await saleItemsRepository.CreateAsync(product);
-            var SaleItems = saleItems.AsDto();
-            return CreatedAtAction(nameof(GetItem), new { id = SaleItems.Id }, SaleItems);
+            await saleItemsRepository.CreateAsync(saleItems);
+            var SaleItemsDto = saleItems.AsDto();
+            return CreatedAtAction(nameof(GetItem), new { id = SaleItemsDto.Id }, SaleItemsDto);
         }
 
         [HttpPut("{id}")]
