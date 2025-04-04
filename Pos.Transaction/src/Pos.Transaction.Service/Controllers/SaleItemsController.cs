@@ -57,7 +57,7 @@ namespace Pos.Transaction.Service.Controllers
             var sales = await salesRepository.GetByIdAsync(saleItems.SaleId);
             if (sales != null)
             {
-                sales.TotalAmount += saleItems.Price;
+                sales.TotalAmount += saleItems.Price * saleItems.Quantity;
                 await salesRepository.UpdateAsync(sales);
             }
 
