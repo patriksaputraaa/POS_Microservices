@@ -15,6 +15,7 @@ namespace Pos.Transaction.Service
 
         public record CustomerDto(Guid Id, string Name, string ContactNumber, string Address, string Email);
         public record ProductDto(Guid Id, string Name, Guid CategoryId, decimal Price, int Stock, string Description);
+        public record UpdateProductStockDto(Guid Id, int Stock);
 
         public record SaleTransactionDto(Guid Id, Guid CustomerId, string CustomerName, DateTime SaleDate, List<SaleProductsDto> SaleProducts, decimal TotalAmount);
         public record SaleProductsDto(Guid ProductId, string ProductName, int Quantity, decimal Price);

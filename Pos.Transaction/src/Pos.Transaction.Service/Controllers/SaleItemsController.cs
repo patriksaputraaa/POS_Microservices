@@ -61,6 +61,21 @@ namespace Pos.Transaction.Service.Controllers
                 await salesRepository.UpdateAsync(sales);
             }
 
+            var product = await productClient.GetProductsAsync();
+            var existingProduct = product.SingleOrDefault(p => p.Id == saleItems.ProductId);
+            if (existingProduct != null)
+            {
+                var updatedProduct = new ProductDto(
+                    existingProduct.Id,
+                    existingProduct.Name,
+                    existingProduct.CategoryId,
+                    existingProduct.Price,
+                    existingProduct.Stock - saleItems.Quantity,
+                    existingProduct.Description
+                    );
+                await productClient.UpdateProductAsync(updatedProduct.Id, updatedProduct);
+            }
+
             var saleItemsDto = saleItems.AsDto();
             return CreatedAtAction(nameof(GetItem), new { id = saleItemsDto.Id }, saleItemsDto);
         }

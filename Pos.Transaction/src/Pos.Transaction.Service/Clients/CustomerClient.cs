@@ -21,6 +21,10 @@ namespace Pos.Transaction.Service.Clients
         public async Task<IReadOnlyCollection<CustomerDto>> GetCustomersAsync()
         {
             var customers = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<CustomerDto>>("/api/Customer");
+            if (customers == null)
+            {
+                return [];
+            }
             return customers;
         }
     }
