@@ -1,21 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Pos.Transaction.Service.Clients
 {
     public class CustomerClient
     {
-        private readonly HttpClient httpClient;
+        private readonly HttpClient _httpClient;
+
         public CustomerClient(HttpClient httpClient)
         {
-            this.httpClient = httpClient;
+            _httpClient = httpClient;
+        }
+
+        public CustomerClient(string baseAddress)
+        {
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
+
+            _httpClient = new HttpClient(handler);
+            _httpClient.BaseAddress = new Uri(baseAddress);
         }
 
         public async Task<IReadOnlyCollection<CustomerDto>> GetCustomersAsync()
         {
-            var customers = await httpClient.GetFromJsonAsync<IReadOnlyCollection<CustomerDto>>("/api/Customer");
+            var customers = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<CustomerDto>>("/api/Customer");
             return customers;
         }
     }

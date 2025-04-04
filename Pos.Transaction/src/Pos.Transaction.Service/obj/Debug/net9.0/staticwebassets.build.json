@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "MxA8ASEHuk0EvW1WeX9r/iXoQHKKvIJOBRZJZhVeI6M=",
+  "Source": "Pos.Transaction.Service",
+  "BasePath": "_content/Pos.Transaction.Service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -12,5 +12,6 @@ namespace Pos.Transaction.Service.Entities
         public Guid CustomerId { get; set; }
         public DateTime SaleDate { get; set; }
         public decimal TotalAmount { get; set; }
+        public List<SaleProductsDto>? SaleProducts { get; init; }
     }
 }

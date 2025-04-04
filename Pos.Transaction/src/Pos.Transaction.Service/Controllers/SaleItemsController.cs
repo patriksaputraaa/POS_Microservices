@@ -14,11 +14,13 @@ namespace Pos.Transaction.Service.Controllers
     public class SaleItemsController : ControllerBase
     {
         private readonly IRepository<SaleItems> saleItemsRepository;
+        private readonly IRepository<Sales> salesRepository;
         private readonly ProductClient productClient;
 
-        public SaleItemsController(IRepository<SaleItems> saleItemsRepository, ProductClient productClient)
+        public SaleItemsController(IRepository<SaleItems> saleItemsRepository, IRepository<Sales> salesRepository, ProductClient productClient)
         {
             this.saleItemsRepository = saleItemsRepository;
+            this.salesRepository = salesRepository;
             this.productClient = productClient;
         }
 
@@ -30,7 +32,7 @@ namespace Pos.Transaction.Service.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<SaleItemsDto>> GetByIdAsync(Guid id)
+        public async Task<ActionResult<SaleItemsDto>> GetItem(Guid id)
         {
             var saleItems = await saleItemsRepository.GetByIdAsync(id);
             if (saleItems is null)
@@ -51,8 +53,16 @@ namespace Pos.Transaction.Service.Controllers
                 Price = createSaleItemsDto.Price
             };
             await saleItemsRepository.CreateAsync(saleItems);
-            var SaleItemsDto = saleItems.AsDto();
-            return CreatedAtAction(nameof(GetItem), new { id = SaleItemsDto.Id }, SaleItemsDto);
+
+            var sales = await salesRepository.GetByIdAsync(saleItems.SaleId);
+            if (sales != null)
+            {
+                sales.TotalAmount += saleItems.Price;
+                await salesRepository.UpdateAsync(sales);
+            }
+
+            var saleItemsDto = saleItems.AsDto();
+            return CreatedAtAction(nameof(GetItem), new { id = saleItemsDto.Id }, saleItemsDto);
         }
 
         [HttpPut("{id}")]

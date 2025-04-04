@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Bson;
 using Pos.Transaction.Service.Entities;
+using Pos.Transaction.Service.Clients;
 
 var builder = WebApplication.CreateBuilder(args);
 BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
@@ -18,6 +19,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMongo().AddMongoRepository<Sales>("sales");
 builder.Services.AddMongo().AddMongoRepository<SaleItems>("saleItems");
+
+builder.Services.AddTransient<CustomerClient>(provider =>
+    new CustomerClient("https://localhost:7184"));
+
+builder.Services.AddTransient<ProductClient>(provider =>
+    new ProductClient("https://localhost:7116"));
 
 var app = builder.Build();
 
