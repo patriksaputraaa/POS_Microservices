@@ -13,10 +13,9 @@ namespace Pos.Transaction.Service.Controllers
         private readonly IRepository<SaleItems> saleItemsRepository;
         private readonly ProductClient productClient;
 
-        public SaleItemsController(IRepository<SaleItems> saleItemsRepository, CustomerClient customerClient)
+        public SaleItemsController(IRepository<SaleItems> saleItemsRepository, ProductClient productClient)
         {
             this.saleItemsRepository = saleItemsRepository;
-            this.customerClient = customerClient;
             this.productClient = productClient;
         }
 
@@ -56,31 +55,30 @@ namespace Pos.Transaction.Service.Controllers
         #====================================== SAMPAI SINI TINGGAL GANTI KE SALEITEMS===================================
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(Guid id, UpdateProductDto updateProductDto)
+        public async Task<ActionResult> Put(Guid id, UpdateSaleItemsDto updateSaleItemsDto)
         {
-            var existingProduct = await productRepository.GetByIdAsync(id);
-            if (existingProduct is null)
+            var existingSaleItems = await saleItemsRepository.GetByIdAsync(id);
+            if (existingSaleItems is null)
             {
                 return NotFound();
             }
-            existingProduct.Name = updateProductDto.Name;
-            existingProduct.CategoryId = updateProductDto.CategoryId;
-            existingProduct.Price = updateProductDto.Price;
-            existingProduct.Stock = updateProductDto.Stock;
-            existingProduct.Description = updateProductDto.Description;
-            await productRepository.UpdateAsync(existingProduct);
+            existingSaleItems.SaleId = updateSaleItemsDto.SaleId;
+            existingSaleItems.ProductId = updateSaleItemsDto.ProductId;
+            existingSaleItems.Quantity = updateSaleItemsDto.Quantity;
+            existingSaleItems.Price = updateSaleItemsDto.Price;
+            await saleItemsRepository.UpdateAsync(existingSaleItems);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var existingProduct = await productRepository.GetByIdAsync(id);
-            if (existingProduct is null)
+            var existingSaleItems = await saleItemsRepository.GetByIdAsync(id);
+            if (existingSaleItems is null)
             {
                 return NotFound();
             }
-            await productRepository.DeleteAsync(id);
+            await saleItemsRepository.DeleteAsync(id);
             return NoContent();
         }
     }
