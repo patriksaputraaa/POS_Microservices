@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Polly;
+using Polly.Retry;
 using Pos.Common;
 using Pos.Transaction.Service.Clients;
 using Pos.Transaction.Service.Entities;
@@ -17,6 +19,7 @@ namespace Pos.Transaction.Service.Controllers
         private readonly IRepository<SaleItems> saleItemsRepository;
         private readonly CustomerClient customerClient;
         private readonly ProductClient productClient;
+        private readonly AsyncRetryPolicy retryPolicy;
 
         public SalesController(IRepository<Sales> salesRepository, IRepository<SaleItems> saleItemsRepository, CustomerClient customerClient, ProductClient productClient)
         {
@@ -24,6 +27,13 @@ namespace Pos.Transaction.Service.Controllers
             this.saleItemsRepository = saleItemsRepository;
             this.customerClient = customerClient;
             this.productClient = productClient;
+
+            retryPolicy = Policy
+                .Handle<HttpRequestException>()
+                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (exception, timeSpan, retryCount, context) =>
+                {
+                    Console.WriteLine($"Retry {retryCount} failed. Waiting {timeSpan} before next retry.");
+                });
         }
 
         [HttpGet]
@@ -76,14 +86,25 @@ namespace Pos.Transaction.Service.Controllers
         [HttpPost]
         public async Task<ActionResult<SalesDto>> Post(CreateSalesDto createSalesDto)
         {
-            var sales = new Sales
+            return await retryPolicy.ExecuteAsync<ActionResult<SalesDto>>(async () =>
             {
-                CustomerId = createSalesDto.CustomerId,
-                SaleDate = createSalesDto.SaleDate
-            };
-            await salesRepository.CreateAsync(sales);
-            var salesDto = sales.AsDto();
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = salesDto.Id }, salesDto);
+                var customer = await customerClient.GetCustomerByIdAsync(createSalesDto.CustomerId);
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+
+                var sales = new Sales
+                {
+                    CustomerId = createSalesDto.CustomerId,
+                    SaleDate = createSalesDto.SaleDate
+                };
+
+                await salesRepository.CreateAsync(sales);
+                var salesDto = sales.AsDto();
+
+                return CreatedAtAction(nameof(GetByIdAsync), new { id = salesDto.Id }, salesDto);
+            });
         }
 
         [HttpPut("{id}")]

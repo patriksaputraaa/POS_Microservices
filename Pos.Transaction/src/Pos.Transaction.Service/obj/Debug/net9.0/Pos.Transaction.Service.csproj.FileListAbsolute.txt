@@ -48,3 +48,6 @@ D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Transaction\src\Pos.Transactio
 D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Transaction\src\Pos.Transaction.Service\obj\Debug\net9.0\Pos.Transaction.Service.pdb
 D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Transaction\src\Pos.Transaction.Service\obj\Debug\net9.0\Pos.Transaction.Service.genruntimeconfig.cache
 D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Transaction\src\Pos.Transaction.Service\obj\Debug\net9.0\ref\Pos.Transaction.Service.dll
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Transaction\src\Pos.Transaction.Service\bin\Debug\net9.0\Polly.dll
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Transaction\src\Pos.Transaction.Service\bin\Debug\net9.0\Polly.Core.dll
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Transaction\src\Pos.Transaction.Service\bin\Debug\net9.0\RabbitMQ.Client.dll

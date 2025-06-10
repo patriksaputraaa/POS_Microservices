@@ -1,31 +1,42 @@
+using Polly;
+using Polly.Retry;
+
 namespace Pos.Transaction.Service.Clients
 {
     public class ProductClient
     {
         private readonly HttpClient _httpClient;
+        private readonly AsyncRetryPolicy retryPolicy;
 
         public ProductClient(HttpClient httpClient)
         {
-            _httpClient = httpClient;
-        }
+            this._httpClient = httpClient;
 
-        public ProductClient(string baseAddress)
-        {
-            var handler = new HttpClientHandler();
-            handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
+            // Konfigurasi Polly untuk retry hingga 3 kali
+            retryPolicy = Policy
+                .Handle<HttpRequestException>()
+                .WaitAndRetryAsync(8, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (exception, timeSpan, retryCount, context) =>
+                {
+                    // Log setiap percobaan gagal
+                    Console.WriteLine($"Retry {retryCount} failed. Waiting {timeSpan} before next retry.");
 
-            _httpClient = new HttpClient(handler);
-            _httpClient.BaseAddress = new Uri(baseAddress);
+                    // Jika sudah mencapai batas retry, matikan service
+                    if (retryCount == 3)
+                    {
+                        Console.WriteLine("Maximum retry attempts reached. Shutting down the service.");
+                        
+                    }
+                });
         }
 
         public async Task<IReadOnlyCollection<ProductDto>> GetProductsAsync()
         {
-            var products = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<ProductDto>>("/api/Product");
-            if (products == null)
+            return await retryPolicy.ExecuteAsync(async () =>
             {
-                return [];
-            }
-            return products;
+                var response = await _httpClient.GetAsync("api/Product");
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<IReadOnlyCollection<ProductDto>>() ?? new List<ProductDto>();
+            });
         }
 
         public async Task<ProductDto?> UpdateProductAsync(Guid id, ProductDto productUpdateDto)

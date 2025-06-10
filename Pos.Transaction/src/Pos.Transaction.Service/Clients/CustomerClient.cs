@@ -27,5 +27,11 @@ namespace Pos.Transaction.Service.Clients
             }
             return customers;
         }
+
+        public async Task<CustomerDto> GetCustomerByIdAsync(Guid id)
+        {
+            var customer = await _httpClient.GetFromJsonAsync<CustomerDto>($"/api/Customer/{id}");
+            return customer;
+        }
     }
 }

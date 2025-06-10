@@ -48,3 +48,4 @@ D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Product\src\Pos.Product.Servic
 D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Product\src\Pos.Product.Service\obj\Debug\net9.0\Pos.Product.Service.pdb
 D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Product\src\Pos.Product.Service\obj\Debug\net9.0\Pos.Product.Service.genruntimeconfig.cache
 D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Product\src\Pos.Product.Service\obj\Debug\net9.0\ref\Pos.Product.Service.dll
+D:\GitHub\UTS_Microservices\POS_Microservices\Pos.Product\src\Pos.Product.Service\bin\Debug\net9.0\RabbitMQ.Client.dll

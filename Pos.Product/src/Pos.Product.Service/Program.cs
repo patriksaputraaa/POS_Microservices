@@ -3,10 +3,14 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Bson;
 using Pos.Product.Service.Entities;
+using Pos.Product.Service;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 // Add services to the container.
+builder.Services.AddSingleton<IConnectionFactory, ConnectionFactory>();
+builder.Services.AddHostedService<ConsumeRabbitMQ>();
 builder.Services.AddControllers(
     options => options.SuppressAsyncSuffixInActionNames = false
 );
